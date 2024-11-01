@@ -1,10 +1,14 @@
+import logging
 from PySide6.QtWidgets import QWidget, QSpinBox, QLabel, QVBoxLayout, QPushButton
+
+# Настройка логирования
+logger = logging.getLogger(__name__)
 
 class SettingsPanel(QWidget):
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout()
-        layout.setContentsMargins(10, 10, 10, 10)  # Дополнительные отступы, если нужно
+        layout.setContentsMargins(10, 10, 10, 10)  # Дополнительные отступы
 
         # Настройка количества столбцов
         self.columns_label = QLabel("Количество столбцов:")
@@ -32,8 +36,13 @@ class SettingsPanel(QWidget):
 
         self.setLayout(layout)
 
+        logger.info("Панель настроек инициализирована.")
+
     def get_settings(self):
-        return {
+        """Возвращает текущие настройки в виде словаря."""
+        settings = {
             "columns": self.columns_spin.value(),
             "padding": self.padding_spin.value(),
         }
+        logger.info(f"Получены текущие настройки: {settings}")
+        return settings

@@ -1,10 +1,10 @@
-/* Основной фон и текст */
+/* ========== Основные стили для фона и текста ========== */
 QWidget {
     background-color: #353535;
     color: #ffffff;
 }
 
-/* Кнопки */
+/* ========== Кнопки ========== */
 QPushButton {
     background-color: #454545;
     color: #ffffff;
@@ -19,32 +19,45 @@ QPushButton:pressed {
     background-color: #3c3c3c;
 }
 
-/* Метки */
+/* ========== Метки ========== */
 QLabel {
     color: #ffffff;
 }
 
-/* Поля для чисел и слайдеры */
+/* ========== Поля для чисел и слайдеры ========== */
 QSpinBox, QSlider {
     background-color: #454545;
     color: #ffffff;
     border: 1px solid #5A5A5A;
 }
 
-/* Панель инструментов */
+/* Стиль для Groove и Handle ползунка */
+QSlider::groove:horizontal {
+    height: 4px;
+    background-color: #5A5A5A;
+}
+QSlider::handle:horizontal {
+    background-color: #ffffff;
+    border: 1px solid #5A5A5A;
+    width: 12px;
+    margin: -5px 0; /* Центрирует handle относительно groove */
+    border-radius: 6px;
+}
+
+/* ========== Панель инструментов ========== */
 QToolBar {
     background-color: #353535;
     border-bottom: 1px solid #5A5A5A;
 }
 
-/* Всплывающие подсказки */
+/* ========== Всплывающие подсказки ========== */
 QToolTip {
     background-color: #454545;
     color: #ffffff;
     border: 1px solid #5A5A5A;
 }
 
-/* Поле для ввода текста */
+/* ========== Поле для ввода текста ========== */
 QLineEdit {
     background-color: #454545;
     color: #ffffff;
@@ -52,7 +65,7 @@ QLineEdit {
     padding: 2px;
 }
 
-/* Ползунок */
+/* ========== Поле прокрутки ========== */
 QScrollArea {
     background-color: #353535;
     color: #ffffff;
