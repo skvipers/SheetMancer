@@ -17,7 +17,7 @@
 1. Убедитесь, что у вас установлен Python 3.7 или выше.
 2. Клонируйте репозиторий:
    ```bash
-   git clone https://github.com/yourusername/SheetMancer.git
+   git clone https://github.com/skvipers/SheetMancer
    cd SheetMancer
 2. Установите необходимые зависимости:
    ```bash
