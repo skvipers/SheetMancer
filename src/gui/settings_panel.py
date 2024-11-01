@@ -4,6 +4,7 @@ class SettingsPanel(QWidget):
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout()
+        layout.setContentsMargins(10, 10, 10, 10)  # Дополнительные отступы, если нужно
 
         # Настройка количества столбцов
         self.columns_label = QLabel("Количество столбцов:")
@@ -25,8 +26,10 @@ class SettingsPanel(QWidget):
         layout.addWidget(self.columns_spin)
         layout.addWidget(self.padding_label)
         layout.addWidget(self.padding_spin)
-        layout.addWidget(self.create_button)
         
+        layout.addStretch(1)  # Добавляем растягиваемое пространство перед кнопкой
+        layout.addWidget(self.create_button)
+
         self.setLayout(layout)
 
     def get_settings(self):

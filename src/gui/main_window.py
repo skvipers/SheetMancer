@@ -1,31 +1,52 @@
-from PySide6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QFileDialog, QToolBar, QScrollArea
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QPixmap
+from PySide6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QPushButton, QFileDialog, QToolBar, QScrollArea
+from PySide6.QtCore import Qt, QSize
+from PySide6.QtGui import QPixmap, QIcon
 from core.sprite_processor import create_spritesheet
 from PIL.ImageQt import ImageQt
 from gui.settings_panel import SettingsPanel
 from gui.preview_panel import PreviewPanel
+import os
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("SheetMancer")
-        self.setFixedSize(1000, 700)  # Устанавливаем базовый размер, окно теперь можно изменять
+        self.resize(1000, 700)
+        self.setWindowIcon(QIcon(os.path.join("assets", "icon.ico")))
         self.setWindowFlag(Qt.WindowMaximizeButtonHint, True)  # Добавляем возможность растягивания окна
 
         # Верхняя панель инструментов
         toolbar = QToolBar("Main Toolbar")
-        self.addToolBar(toolbar)
+        toolbar.setMovable(False)  # Отключаем возможность перетаскивания
 
         # Кнопка загрузки спрайтов
-        load_button = QPushButton("Загрузить спрайты")
+        load_button = QPushButton()
+        load_button.setIcon(QIcon(os.path.join("assets/icons", "open-folder.svg")))
+        load_button.setToolTip("Загрузить спрайты")
+        load_button.setFixedSize(48, 48)
+        load_button.setIconSize(QSize(44, 44))
         load_button.clicked.connect(self.load_sprites)
-        toolbar.addWidget(load_button)
 
         # Кнопка сохранения спрайтшита
-        save_button = QPushButton("Сохранить спрайтшит")
+        save_button = QPushButton()
+        save_button.setIcon(QIcon(os.path.join("assets/icons", "save.svg")))
+        save_button.setToolTip("Сохранить спрайтшит")
+        save_button.setFixedSize(48, 48)
+        save_button.setIconSize(QSize(44, 44)) 
         save_button.clicked.connect(self.save_spritesheet)
-        toolbar.addWidget(save_button)
+
+        # Установка отступов между кнопками
+        button_container = QWidget()
+        button_layout = QHBoxLayout(button_container)
+        #button_layout.setContentsMargins(10, 10, 10, 10)  # Отступы от краев
+        button_layout.setSpacing(5)  # Расстояние между кнопками
+
+        # Добавление кнопок в контейнер
+        button_layout.addWidget(load_button)
+        button_layout.addWidget(save_button)
+        toolbar.addWidget(button_container)
+
+        self.addToolBar(toolbar)
 
         # Центральный виджет с layout
         central_widget = QWidget()

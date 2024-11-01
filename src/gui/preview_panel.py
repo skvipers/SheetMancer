@@ -6,8 +6,13 @@ class PreviewPanel(QWidget):
     def __init__(self):
         super().__init__()
         layout = QVBoxLayout()
-        
-        self.preview_label = QLabel("Предпросмотр спрайтшита")
+        layout.setContentsMargins(10, 10, 10, 10)  # Добавляем отступы вокруг панели
+
+        # Заголовок с выравниванием по левому краю и верху
+        self.preview_label = QLabel("Предпросмотр")
+        self.preview_label.setAlignment(Qt.AlignLeft | Qt.AlignTop)
+
+        # Метка для изображения
         self.image_label = QLabel()
         self.image_label.setAlignment(Qt.AlignCenter)
 
@@ -22,9 +27,10 @@ class PreviewPanel(QWidget):
         self.scale_slider.setValue(100)  # По умолчанию 100%
         self.scale_slider.valueChanged.connect(self.update_scale)
 
-        layout.addWidget(self.preview_label)
-        layout.addWidget(self.image_label)
-        layout.addWidget(self.scale_slider)
+        # Добавляем элементы на панель
+        layout.addWidget(self.preview_label)  # Надпись сверху
+        layout.addWidget(self.image_label)    # Поле для изображения
+        layout.addWidget(self.scale_slider)   # Слайдер масштаба
         self.setLayout(layout)
 
     def load_images(self, image_paths):

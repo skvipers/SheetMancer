@@ -1,0 +1,60 @@
+/* Основной фон и текст */
+QWidget {
+    background-color: #353535;
+    color: #ffffff;
+}
+
+/* Кнопки */
+QPushButton {
+    background-color: #454545;
+    color: #ffffff;
+    border: 1px solid #5A5A5A;
+    padding: 5px;
+    border-radius: 5px;
+}
+QPushButton:hover {
+    background-color: #5A5A5A;
+}
+QPushButton:pressed {
+    background-color: #3c3c3c;
+}
+
+/* Метки */
+QLabel {
+    color: #ffffff;
+}
+
+/* Поля для чисел и слайдеры */
+QSpinBox, QSlider {
+    background-color: #454545;
+    color: #ffffff;
+    border: 1px solid #5A5A5A;
+}
+
+/* Панель инструментов */
+QToolBar {
+    background-color: #353535;
+    border-bottom: 1px solid #5A5A5A;
+}
+
+/* Всплывающие подсказки */
+QToolTip {
+    background-color: #454545;
+    color: #ffffff;
+    border: 1px solid #5A5A5A;
+}
+
+/* Поле для ввода текста */
+QLineEdit {
+    background-color: #454545;
+    color: #ffffff;
+    border: 1px solid #5A5A5A;
+    padding: 2px;
+}
+
+/* Ползунок */
+QScrollArea {
+    background-color: #353535;
+    color: #ffffff;
+    border: none;
+}
